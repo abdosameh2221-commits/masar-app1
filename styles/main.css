@@ -1,0 +1,171 @@
+/* ==========================================================================
+   تطبيق مسار 2.0 - التصميم الفاتح المريح (White & Fresh Mint Green)
+   Masar Light & Mint Design System with Smooth Micro-Animations
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap');
+
+:root {
+  --primary-mint: #10b981;
+  --mint-light: #ecfdf5;
+  --mint-border: #a7f3d0;
+  --bg-page: #f8fafc;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+}
+
+body {
+  font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  direction: rtl;
+  text-align: right;
+  background-color: #f8fafc;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+/* Card Styling & Hover Lift */
+.mint-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mint-card:hover {
+  transform: translateY(-3px);
+  border-color: #a7f3d0;
+  box-shadow: 0 12px 25px -8px rgba(16, 185, 129, 0.15);
+}
+
+/* Smooth Tab Animations */
+.tab-content {
+  display: none;
+  animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Soft Mint Pulse */
+@keyframes pulseMint {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+.pulse-mint {
+  animation: pulseMint 2.5s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Custom Mint Checkbox */
+.custom-checkbox {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #cbd5e1;
+  border-radius: 7px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ffffff;
+}
+
+.custom-checkbox:hover {
+  border-color: #10b981;
+}
+
+.custom-checkbox:checked {
+  background-color: #10b981;
+  border-color: #10b981;
+  transform: scale(1.05);
+}
+
+.custom-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Toast Notification (Light Mint) */
+#toast {
+  visibility: hidden;
+  min-width: 260px;
+  background-color: #064e3b;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 14px 22px;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  box-shadow: 0 15px 30px rgba(6, 78, 59, 0.25);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+#toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 45px;
+}
